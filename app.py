@@ -12,7 +12,13 @@ class PC(BaseModel):
     processor: Optional[str] = None
     video_card: Optional[str] = None
 
-repo: List[PC] = []
+repo: List[PC] = [
+    PC(id=1, screen="24 inch Full HD", 
+       keyboard="Mechanical", 
+       mouse="Optical", 
+       processor="Intel i5-10400",
+       video_card="NVIDIA GTX 1660")
+]
 
 @app.get("/pc", response_model=List[PC])
 def get_ps():
