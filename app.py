@@ -1,9 +1,18 @@
-from fastapi import FastAPI
-from fastapi.responses import HTMLResponse
+from typing import Optional
+from fastapi import FastAPI,HTMLResponse
+from pydantic import BaseModel
 
 app = FastAPI()
 
+class PC(BaseModel):
+    id: int
+    screen: Optional[str] = None
+    keyboard: Optional[str] = None
+    mouse: Optional[str] = None
+    processor: Optional[str] = None
+    video_card: Optional[str] = None
+
+
 @app.get("/")
-def read_root():
-    html_content = "<h2>Hello METANIT.COM!</h2>"
-    return HTMLResponse(content=html_content)
+def get_ps():
+    return repo
