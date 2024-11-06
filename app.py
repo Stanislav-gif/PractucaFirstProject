@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import List, Optional
 from fastapi import FastAPI,HTMLResponse
 from pydantic import BaseModel
 
@@ -12,6 +12,7 @@ class PC(BaseModel):
     processor: Optional[str] = None
     video_card: Optional[str] = None
 
+repo: List[PC] = []
 
 @app.get("/")
 def get_ps():
