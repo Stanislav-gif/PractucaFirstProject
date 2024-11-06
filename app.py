@@ -23,3 +23,7 @@ def find_pc(id:int):
     if pc is None:
         raise HTTPException(status_code=404,detail = "PC not found")
     return pc
+@app.post("/pc",response_model=PC)
+def create_pc(pc:PC):
+    repo.append(pc)
+    return pc
