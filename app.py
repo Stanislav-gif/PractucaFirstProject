@@ -1,5 +1,5 @@
 from typing import List, Optional
-from fastapi import FastAPI,HTMLResponse
+from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 
 app = FastAPI()
@@ -14,6 +14,6 @@ class PC(BaseModel):
 
 repo: List[PC] = []
 
-@app.get("/")
+@app.get("/pc", response_model=List[PC])
 def get_ps():
     return repo
