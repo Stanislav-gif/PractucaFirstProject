@@ -43,3 +43,8 @@ def update_pc(pc:PC):
                 i.video_card = pc.video_card
             return i
     raise HTTPException(status_code=404,detail = "PC not pound")
+@app.delete("/pc/{id}",status_code=204)
+def delete_pc(id:int):
+    global repo 
+    repo = [pc for pc in repo if pc.id != id]
+    return
