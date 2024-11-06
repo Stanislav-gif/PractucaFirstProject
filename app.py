@@ -27,3 +27,19 @@ def find_pc(id:int):
 def create_pc(pc:PC):
     repo.append(pc)
     return pc
+@app.put("/pc",response_model=PC)
+def update_pc(pc:PC):
+    for i in repo:
+        if i.id == pc.id:
+            if pc.screen is not None:
+                i.screen = pc.screen
+            if pc.keyboard is not None:
+                i.keyboard = pc.keyboard
+            if pc.mouse is not None:
+                i.mouse = pc.mouse
+            if pc.processor is not None:
+                i.processor = pc.processor
+            if pc.video_card is not None:
+                i.video_card = pc.video_card
+            return i
+    raise HTTPException(status_code=404,detail = "PC not pound")
